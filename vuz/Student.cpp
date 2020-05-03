@@ -1,5 +1,6 @@
 #include "Student.h"
 
+
 Student::Student()
 {
 	this->Name = "Unknown";
@@ -56,9 +57,10 @@ int Student::GetNumberGroup()
 	return this->NumberGroup;
 }
 
-Student& Student::operator<<(const int index)
+ostream& operator<<(ostream& out,Student &student)
 {
-	// TODO: вставьте здесь оператор return
+	out << "Student:" << endl << student.GetLastName() << endl << student.GetName() << endl << student.GetTrainingDirection() << endl << student.GetNumberGroup() << endl << endl;
+	return out;
 }
 
 

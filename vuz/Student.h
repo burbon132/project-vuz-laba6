@@ -1,6 +1,8 @@
 #pragma once
 #ifndef _STUDENT_H_
 #define _STUDENT_H_
+#include <fstream>
+using namespace std;
 struct Student
 {
 public:
@@ -17,7 +19,7 @@ public:
 	char* GetTrainingDirection();
 	int	  GetNumberGroup();
 
-	Student& Student::operator<<(const int index);
+	friend ostream& operator<<(ostream& out, Student& student);
 
 private:
 	char* Name = new char[10]; // Имя из 10 символов

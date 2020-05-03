@@ -8,6 +8,7 @@ using namespace std;
 int main() {
 
 	Student ST1 = Student("Sanya", "Moiseev", "RT", 12);
+	cout << ST1;
 	system("pause");
 	return 0;
 }
