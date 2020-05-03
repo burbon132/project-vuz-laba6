@@ -111,11 +111,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="vuz.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Student.h" />
   </ItemGroup>
