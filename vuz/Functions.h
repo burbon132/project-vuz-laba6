@@ -4,5 +4,5 @@
 #include "List.h"
 #include "Student.h"
 void Compare(List& lst, char* TrainingDirection);
-List Compare(List& lst, char* TrainingDirection, int GroupNumber);
+void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber);
 #endif // !_FUNCTIONS_N_

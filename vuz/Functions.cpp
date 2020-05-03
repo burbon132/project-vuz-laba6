@@ -9,14 +9,15 @@ void Compare(List& lst, char* TrainingDirection)
 	}
 }
 
-List Compare(List& lst, char* TrainingDirection, int GroupNumber)
+void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber)
 {
-	List newlst;
-	for (int i = 0; i < lst.GetSize(); i++) {
+	for (int i = 0; i < lst.GetSize(); i++) 
+	{
 		if ((lst[i].GetTrainingDirection() == TrainingDirection)&&(lst[i].GetNumberGroup() == GroupNumber)) {
 			newlst.push_front(lst[i]);
-			cout << lst[i];
 		}
 	}
-	return newlst;
+	for (int i = 0; i < newlst.GetSize(); i++) {
+		cout << newlst[i];
+	}
 }

@@ -28,9 +28,13 @@ private:
 	char* TrainingDirection = new char[5]; // Направление подготовки из 5 символов
 	int   NumberGroup; // номер группы
 	
-	/*
-	class DataBir; НУЖНО ДОБАВИТЬ ФУНКЦИОНАЛ СРАВНЕНИЯ ДАТЫ РОЖДЕНИЯ
-	*/
+	class DataBir
+	{
+	public:
+		int day;
+		int month;
+		int year;
+	};
 
 };
 #endif  // !_STUDENT_H_
