@@ -15,8 +15,9 @@ Student::Student(char* Name, char* LastName, char* TrainingDirection, int Numder
 	this->LastName = LastName;
 	this->TrainingDirection = TrainingDirection;
 	this->NumberGroup = NumderGroup;
-	this->BD = 
-		//Student::DataBir::DataBir(day, month, year);
+	BD.SetDay(day);
+	BD.SetMonth(month);
+	BD.SetYear(year);
 }
 
 Student::DataBir::DataBir()
@@ -70,7 +71,6 @@ void Student::DataBir::SetYear(int year)
 	this->year = year;
 }
 
-
 //////////////////////////////////////////////////////////////GETTERS/////////////////////////////////////////////////////////////////
 
 char* Student::GetName()
@@ -93,6 +93,21 @@ int Student::GetNumberGroup()
 	return this->NumberGroup;
 }
 
+int Student::GGetDay()
+{
+	return BD.GetDay();
+}
+
+int Student::GGetMonth()
+{
+	return BD.GetMonth();
+}
+
+int Student::GGetYear()
+{
+	return BD.GetYear();
+}
+
 int Student::DataBir::GetDay()
 {
 	return this->day;
@@ -112,8 +127,6 @@ int Student::DataBir::GetYear()
 
 ostream& operator<<(ostream& out,Student &student)
 {
-	out << "Student:" << endl << student.GetLastName() << endl << student.GetName() << endl << student.GetTrainingDirection() << endl << student.GetNumberGroup() << endl <<  << endl;
+	out << "Student:" << endl << student.GetLastName() << endl << student.GetName() << endl << student.GetTrainingDirection() << endl << student.GetNumberGroup() << endl << student.BD.GetDay() << "." << student.BD.GetMonth() << "." << student.BD.GetYear() << endl << endl;
 	return out;
 }
-
-

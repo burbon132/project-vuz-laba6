@@ -5,4 +5,5 @@
 #include "Student.h"
 void Compare(List& lst, char* TrainingDirection);
 void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber);
+void Eldest(List& lst);
 #endif // !_FUNCTIONS_N_
