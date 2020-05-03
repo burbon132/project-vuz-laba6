@@ -21,3 +21,5 @@ void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber)
 		cout << newlst[i];
 	}
 }
+
+//void Eldest(List& lst, DataBir)

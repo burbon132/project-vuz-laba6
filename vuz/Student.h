@@ -8,7 +8,7 @@ struct Student
 {
 public:
 	Student();
-	Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup);
+	Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup, int day, int month, int year);
 
 	void SetName(char* Name);
 	void SetLastName(char* LastName);
@@ -20,21 +20,36 @@ public:
 	char* GetTrainingDirection();
 	int	  GetNumberGroup();
 
+
 	friend ostream& operator<<(ostream& out, Student& student);
 
-private:
+protected:
 	char* Name = new char[10]; // Имя из 10 символов
 	char* LastName = new char[15]; // Фамилия из 15 символов
 	char* TrainingDirection = new char[5]; // Направление подготовки из 5 символов
 	int   NumberGroup; // номер группы
 	
+	
 	class DataBir
 	{
 	public:
+		int		GetDay();
+		int		GetMonth();
+		int		GetYear();
+
+		void	SetDay(int day);
+		void	SetMonth(int month);
+		void	SetYear(int year);
+
+		DataBir();
+		DataBir(int day, int month, int year);
+	protected:
 		int day;
 		int month;
 		int year;
+		friend ostream& operator<<(ostream& out, Student& student);
 	};
 
+	DataBir BD;
 };
 #endif  // !_STUDENT_H_
