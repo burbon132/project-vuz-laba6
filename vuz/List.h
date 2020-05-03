@@ -1,22 +1,9 @@
 #pragma once
 #ifndef _LIST_H_
 #define _LIST_H_
-template<typename T>
+
 class List
 {
-public:
-	List();
-	~List();
-
-	T& operator[](const int index);
-
-	void push_front(T student);
-
-	char* GetStudentName() { return Student.Name; }
-	char* GetStudentLastName() { return Student.LastName; }
-	char* GetStudentTrainingDirection() { return Student.TrainingDirection; }
-	int GetStudentNumberGroup() { return Student.NumberGroup; }
-
 private:
 	struct Student
 	{
@@ -26,9 +13,21 @@ private:
 		char* TrainingDirection = new char[5]; // Íàïğàâëåíèå ïîäãîòîâêè èç 5 ñèìâîëîâ
 		int NumberGroup; // íîìåğ ãğóïïû
 		Student(char* Name, char* LastName, char* TrainingDirection, int NumberGroup, Student* pNext);
+		Student(Student* student, Student *head);
+		char* GetStudentName() { return Name; }
+		char* GetStudentLastName() { return LastName; }
+		char* GetStudentTrainingDirection() { return TrainingDirection; }
+		int GetStudentNumberGroup() { return NumberGroup; }
+		
 		//class DataBir; ÍÓÆÍÎ ÄÎÁÀÂÈÒÜ ÔÓÍÊÖÈÎÍÀË ÑĞÀÂÍÅÍÈß ÄÀÒÛ ĞÎÆÄÅÍÈß
 	};
 	int Size;
 	Student* head;
+public:
+	List();
+	~List();
+	void SetStudent(char* Name, char* LastName, char* TrainingDirection, int NumberGroup);
+	Student& operator[](const int index);
+	void push_front(List::Student* student);	
 };
 #endif // !_LIST_H_

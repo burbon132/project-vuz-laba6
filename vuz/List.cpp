@@ -1,43 +1,60 @@
 #include "List.h"
-template<typename T>
-List<T>::List()
+
+List::List()
 {
 	Size = 0;
 	head = nullptr;
 }
-template<typename T>
-List<T>::~List()
+
+List::~List()
 {
 
 }
-template<typename T>
-T& List<T>::operator[](const int index)
+
+void List::SetStudent(char* Name, char* LastName, char* TrainingDirection, int NumberGroup)
 {
-		int counter = 0;
-
-		Student* current = this->head;
-
-		while (current != nullptr)
-		{
-			if (counter == index)
-			{
-				return current->Student;
-			}
-			current = current->pNext;
-			counter++;
-		}
+	this->head->Name = Name;
+	this->head->LastName = LastName;
+	this->head->TrainingDirection = TrainingDirection;
+	this->head->NumberGroup = NumberGroup;
 }
 
-template<typename T>
-void List<T>::push_front(T student)
+
+
+List::Student::Student(Student* student, Student *head)
 {
-	head = new Student<T>(student, head);
+	this->Name = student->Name;
+	this->LastName = student->LastName;
+	this->TrainingDirection = student->TrainingDirection;
+	this->NumberGroup = student->NumberGroup;
+	this->pNext = head->pNext;
+}
+
+void List::push_front(List::Student *student)
+{
+	head = new Student(student, head);
 	Size++;
 }
 
 
-template<typename T>
-List<T>::Student::Student(char* Name = "Unknown", char* LastName = "Unknown", char* TrainingDirection = "Unknown", int NumberGroup = 0, Student* pNext = nullptr)
+List::Student& List::operator[](const int index)
+{
+	int counter = 0;
+
+	Student* current = this->head;
+	while (current != nullptr)
+	{
+		if (counter == index)
+		{
+			return *current;
+		}
+		current = current->pNext;
+		counter++;
+	}
+}
+
+
+List::Student::Student(char* Name = "Unknown", char* LastName = "Unknown", char* TrainingDirection = "Unknown", int NumberGroup = 0, Student* pNext = nullptr)
 {
 	this->Name = Name;
 	this->LastName = LastName;
