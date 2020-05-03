@@ -112,7 +112,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="List.cpp" />
-    <ClCompile Include="over.cpp" />
     <ClCompile Include="vuz.cpp" />
   </ItemGroup>
   <ItemGroup>
