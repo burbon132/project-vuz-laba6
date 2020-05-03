@@ -27,18 +27,29 @@ void Eldest(List& lst, List& eldestlst)
 	Student eldest = lst[0];
 	for (int i = 1; i < lst.GetSize(); i++) 
 	{
-		if (lst[i].GGetYear() < eldest.GGetYear())
+		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() < eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay())
 			eldest = lst[i];
-		else if (lst[i].GGetYear() == eldest.GGetYear())
-			if (lst[i].GGetMonth() < eldest.GGetMonth())
-				eldest = lst[i];
-			else if (lst[i].GGetMonth() == eldest.GGetMonth())
-				if (lst[i].GGetDay() < eldest.GGetDay())
-					eldest = lst[i];
-				else if (lst[i].GGetDay() == eldest.GGetDay())
-				{
-					eldestlst.push_front(lst[i]);
-				}
+	}
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay())
+			eldestlst.push_back(lst[i]);
 	}
 	eldestlst.push_front(eldest);
+}
+
+void Junior(List& lst, List& juniorlst)
+{
+	Student junior = lst[0];
+	for (int i = 1; i < lst.GetSize(); i++)
+	{
+		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() < junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
+			junior = lst[i];
+	}
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
+			juniorlst.push_back(lst[i]);
+	}
+	juniorlst.push_front(junior);
 }
