@@ -6,6 +6,7 @@ class List
 public:
 	List();
 	~List();
+	int& operator[](const int index);
 private:
 	struct Student
 	{
