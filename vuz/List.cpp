@@ -1,17 +1,43 @@
 #include "List.h"
-
-List::List()
+template<typename T>
+List<T>::List()
 {
 	Size = 0;
 	head = nullptr;
 }
-
-List::~List()
+template<typename T>
+List<T>::~List()
 {
 
 }
+template<typename T>
+T& List<T>::operator[](const int index)
+{
+		int counter = 0;
 
-List::Student::Student(char* Name = "Unknown", char* LastName = "Unknown", char* TrainingDirection = "Unknown", int NumberGroup = 0, Student* pNext = nullptr)
+		Student* current = this->head;
+
+		while (current != nullptr)
+		{
+			if (counter == index)
+			{
+				return current->Student;
+			}
+			current = current->pNext;
+			counter++;
+		}
+}
+
+template<typename T>
+void List<T>::push_front(T student)
+{
+	head = new Student<T>(student, head);
+	Size++;
+}
+
+
+template<typename T>
+List<T>::Student::Student(char* Name = "Unknown", char* LastName = "Unknown", char* TrainingDirection = "Unknown", int NumberGroup = 0, Student* pNext = nullptr)
 {
 	this->Name = Name;
 	this->LastName = LastName;

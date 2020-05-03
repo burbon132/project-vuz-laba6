@@ -1,12 +1,22 @@
 #pragma once
 #ifndef _LIST_H_
 #define _LIST_H_
+template<typename T>
 class List
 {
 public:
 	List();
 	~List();
-	int& operator[](const int index);
+
+	T& operator[](const int index);
+
+	void push_front(T student);
+
+	char* GetStudentName() { return Student.Name; }
+	char* GetStudentLastName() { return Student.LastName; }
+	char* GetStudentTrainingDirection() { return Student.TrainingDirection; }
+	int GetStudentNumberGroup() { return Student.NumberGroup; }
+
 private:
 	struct Student
 	{
