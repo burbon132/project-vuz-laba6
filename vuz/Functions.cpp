@@ -30,12 +30,12 @@ void Eldest(List& lst, List& eldestlst)
 		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() < eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay())
 			eldest = lst[i];
 	}
-	for (int i = 0; i < lst.GetSize(); i++)
+	for (int i = 1; i < lst.GetSize(); i++)
 	{
 		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay())
 			eldestlst.push_back(lst[i]);
 	}
-	eldestlst.push_front(eldest);
+	eldestlst.push_back(eldest);
 }
 
 void Junior(List& lst, List& juniorlst)
@@ -46,10 +46,10 @@ void Junior(List& lst, List& juniorlst)
 		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() < junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
 			junior = lst[i];
 	}
-	for (int i = 0; i < lst.GetSize(); i++)
+	for (int i = 1; i < lst.GetSize(); i++)
 	{
 		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
 			juniorlst.push_back(lst[i]);
 	}
-	juniorlst.push_front(junior);
+	juniorlst.push_back(junior);
 }
