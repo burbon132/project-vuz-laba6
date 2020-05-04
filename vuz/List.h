@@ -32,6 +32,7 @@ public:
 	//удаление последнего элемента в списке
 	void pop_back();
 
+	//Меняет элементы списка местами
 	void Swap(List& lst, int index1, int index2);
 
 private:

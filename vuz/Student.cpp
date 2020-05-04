@@ -56,6 +56,21 @@ void Student::SetNumderGroup(int NumderGroup)
 	this->NumberGroup = NumberGroup;
 }
 
+void Student::SSetDay(int day)
+{
+	this->BD.SetDay(day);
+}
+
+void Student::SSetMonth(int month)
+{
+	this->BD.SetDay(month);
+}
+
+void Student::SSetYear(int year)
+{
+	this->BD.SetDay(year);
+}
+
 void Student::DataBir::SetDay(int day)
 {
 	this->day = day;
@@ -127,6 +142,6 @@ int Student::DataBir::GetYear()
 
 ostream& operator<<(ostream& out,Student &student)
 {
-	out << "Student:" << endl << student.GetLastName() << endl << student.GetName() << endl << student.GetTrainingDirection() << endl << student.GetNumberGroup() << endl << student.BD.GetDay() << "." << student.BD.GetMonth() << "." << student.BD.GetYear() << endl << endl;
+	out << "Студент:" << endl << student.GetLastName() << endl << student.GetName() << endl << student.GetTrainingDirection() << endl << student.GetNumberGroup() << endl << student.BD.GetDay() << "." << student.BD.GetMonth() << "." << student.BD.GetYear() << endl << endl;
 	return out;
 }

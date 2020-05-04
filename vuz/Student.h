@@ -14,6 +14,9 @@ public:
 	void SetLastName(char* LastName);
 	void SetTrainingDirection(char* TrainingDirection);
 	void SetNumderGroup(int NumderGroup);
+	void SSetDay(int day);
+	void SSetMonth(int month);
+	void SSetYear(int year);
 	
 	char* GetName();
 	char* GetLastName();
@@ -28,12 +31,11 @@ public:
 protected:
 	char* Name = new char[10]; // Имя из 10 символов
 	char* LastName = new char[15]; // Фамилия из 15 символов
-	char* TrainingDirection = new char[5]; // Направление подготовки из 5 символов
+	char* TrainingDirection = new char[4]; // Направление подготовки из 5 символов
 	int   NumberGroup; // номер группы
 
 	class DataBir
 	{
-		
 	public:
 		int	 GetDay();
 		int	 GetMonth();
@@ -51,6 +53,5 @@ protected:
 		int year;
 	};
 	DataBir BD;
-	
 };
 #endif  // !_STUDENT_H_

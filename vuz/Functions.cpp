@@ -82,7 +82,7 @@ void SortList(List& lst)
 		k = 0;
 	}
 }
-
+/*
 void Save2Disk(List& lst)
 {
 	string path;
@@ -95,6 +95,27 @@ void Save2Disk(List& lst)
 	}
 	fout.close();
 }
+*/
+
+void Save2Disk(List& lst)
+{
+	string path;
+	cin >> path;
+	ofstream fout;
+	fout.open(path);
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		fout.write(lst[i].GetName(), sizeof(lst[i].GetName()));
+		fout.write(lst[i].GetLastName(), sizeof(lst[i].GetLastName()));
+		fout.write(lst[i].GetTrainingDirection(), sizeof(lst[i].GetTrainingDirection()));
+		fout << lst[i].GetNumberGroup() << "\t";
+		fout << lst[i].GGetDay() << ".";
+		fout << lst[i].GGetMonth() << ".";
+		fout << lst[i].GGetYear() << endl;
+	}
+	fout.close();
+	cout << endl;
+}
 
 void Read4Disk(List& lst)
 {
@@ -102,9 +123,27 @@ void Read4Disk(List& lst)
 	cin >> path;
 	ifstream fin;
 	fin.open(path);
-	while (fin.read((char*)&lst, sizeof(Student)))
+	int i = 0;
+	char* Ctemp = new char;
+	int Itemp;
+	while (!fin.eof())
 	{
-
+		fin >> Ctemp;
+		lst[i].SetName(Ctemp);
+		fin >> Ctemp;
+		lst[i].SetLastName(Ctemp);
+		fin >> Ctemp;
+		lst[i].SetTrainingDirection(Ctemp);
+		fin >> Itemp;
+		lst[i].SetNumderGroup(Itemp);
+		fin >> Itemp;
+		lst[i].SSetDay(Itemp);
+		fin >> Itemp;
+		lst[i].SSetMonth(Itemp);
+		fin >> Itemp;
+		lst[i].SSetYear(Itemp);
+		i++;
 	}
+	delete Ctemp;
 	fin.close();
 }
