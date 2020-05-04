@@ -159,21 +159,30 @@ void Read4Disk(List& lst)
 	cin >> path;
 	ifstream fin;
 	fin.open(path);
-	int i = 0;
+	int i = 0, j = 0;;
 	char* Ctemp = new char;
 	int Itemp;
 	while (!fin.eof())
 	{
 		lst.push_front(Student());
 		fin >> Ctemp;
-		if(Ctemp[1] != (char)32)
 		lst[i].SetName(Ctemp);
+
 		fin >> Ctemp;
-		if (Ctemp[1] != (char)32)
+		while (!((Ctemp[j] > (char)62 && Ctemp[j] < (char)91) || (Ctemp[j] > (char)96 && Ctemp[j] < (char)123) || (Ctemp[j] > (char)191 && Ctemp[j] < (char)256)))
+		{
+			fin >> Ctemp;
+			j++;
+		}
+		j = 0;
+		
 		lst[i].SetLastName(Ctemp);
+
 		fin >> Ctemp;
-		if (Ctemp[1] != (char)32)
-		lst[i].SetTrainingDirection(Ctemp);
+
+		if (Ctemp == (char*)32)
+			lst[i].SetTrainingDirection(Ctemp);
+
 		fin >> Itemp;
 		lst[i].SetNumderGroup(Itemp);
 		fin >> Itemp;

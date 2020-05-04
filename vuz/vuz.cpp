@@ -10,11 +10,10 @@ int main() {
 	Student ST2 = Student("Aня", "Сосева", "УТС", 13, 7, 1, 2003);
 	Student ST3 = Student("Вадулаааааа", "Романов", "ПМММ", 21, 6, 2, 2010);
 	List lst;
-	lst.push_front(ST1);
-	lst.push_front(ST3);
-	lst.push_front(ST2);
-	//Save2Disk(lst);
-	Save2Disk(lst);
+	//lst.push_front(ST1);
+	//lst.push_front(ST3);
+	//lst.push_front(ST2);
+	Read4Disk(lst);
 	for (int i = 0; i < lst.GetSize(); i++) {
 		cout << lst[i];
 	}
