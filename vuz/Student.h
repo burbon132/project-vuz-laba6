@@ -31,7 +31,6 @@ protected:
 	char* TrainingDirection = new char[5]; // Направление подготовки из 5 символов
 	int   NumberGroup; // номер группы
 
-
 	class DataBir
 	{
 		
@@ -52,5 +51,6 @@ protected:
 		int year;
 	};
 	DataBir BD;
+	
 };
 #endif  // !_STUDENT_H_

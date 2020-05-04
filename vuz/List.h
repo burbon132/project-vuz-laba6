@@ -44,6 +44,7 @@ private:
 			this->pNext = pNext;
 		}
 	};
+	friend void SortList(List& lst);
 	int Size;
 	Node* head;
 };
