@@ -61,20 +61,20 @@ void SortList(List& lst)
 	{
 		for (int j = i; j < lst.GetSize() - 1; j++)
 		{
-			char* st1 = lst[j].GetName();
-			char* st2 = lst[j + 1].GetName();
-			if (st1[0] > st2[0])
+			char* st1 = lst[j].GetLastName();
+			char* st2 = lst[j + 1].GetLastName();
+			if ((int)st1[0] > (int)st2[0])
 			{
-				//SWAP
+				lst.Swap(lst, j, j + 1);
 			}
-			if (st1[0] == st2[0])
+			if ((int)st1[0] == (int)st2[0])
 			{
-				while (st1[k] == st2[k])
+				while ((int)st1[k] == (int)st2[k])
 				{
 					k++;
 				}
-				if (st1[k] > st2[k]) {
-					//SWAP
+				if ((int)st1[k] > (int)st2[k]) {
+					lst.Swap(lst, j, j + 1);
 				}
 			}
 			k = 0;
