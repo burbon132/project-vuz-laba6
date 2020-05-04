@@ -53,3 +53,29 @@ void Junior(List& lst, List& juniorlst)
 	}
 	juniorlst.push_back(junior);
 }
+
+void SortList(List& lst)
+{
+	int k = 0;
+	for (int i = 0; i < lst.GetSize() - 1; i++)
+	{
+		for (int j = i; j < lst.GetSize() - 1; j++)
+		{
+			char* st1 = lst[j].GetName();
+			char* st2 = lst[j + 1].GetName();
+			if (st1[0] > st2[0])
+			{
+
+			}
+			if (st1[0] == st2[0])
+			{
+				while (st1[k] == st2[k])
+				{
+					k++;
+				}
+			}
+			k = 0;
+		}
+		k = 0;
+	}
+}
