@@ -8,12 +8,12 @@ int main() {
 	setlocale(LC_ALL, "RUS");
 	Student ST1 = Student("Саня", "Моисеев", "РТ", 12, 30, 11, 2003);
 	Student ST2 = Student("Aня", "Сосева", "УТС", 13, 7, 1, 2003);
-	Student ST3 = Student("Вадулаааааа", "Романов", "ПМММ", 21, 6, 2, 2010);
+	Student ST3 = Student("Вадула", "Романов", "ПМС", 21, 6, 2, 2010);
 	List lst;
-	//lst.push_front(ST1);
-	//lst.push_front(ST3);
-	//lst.push_front(ST2);
-	Read4Disk(lst);
+	lst.push_front(ST1);
+	lst.push_front(ST3);
+	lst.push_front(ST2);
+	Save2Disk(lst);
 	for (int i = 0; i < lst.GetSize(); i++) {
 		cout << lst[i];
 	}
