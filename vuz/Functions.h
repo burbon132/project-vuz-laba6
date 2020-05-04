@@ -8,4 +8,6 @@ void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber);
 void Eldest(List& lst, List& eldestlst);
 void Junior(List& lst, List& juniorlst);
 void SortList(List& lst);
+void Save2Disk(List& lst);
+void Read4Disk(List& lst);
 #endif // !_FUNCTIONS_N_

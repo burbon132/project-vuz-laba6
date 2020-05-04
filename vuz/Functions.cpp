@@ -82,3 +82,29 @@ void SortList(List& lst)
 		k = 0;
 	}
 }
+
+void Save2Disk(List& lst)
+{
+	string path;
+	cin >> path;
+	ofstream fout;
+	fout.open(path);
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		fout.write((char*)&lst[i], sizeof(Student));
+	}
+	fout.close();
+}
+
+void Read4Disk(List& lst)
+{
+	string path;
+	cin >> path;
+	ifstream fin;
+	fin.open(path);
+	while (fin.read((char*)&lst, sizeof(Student)))
+	{
+
+	}
+	fin.close();
+}
