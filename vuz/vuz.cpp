@@ -13,6 +13,7 @@ int main() {
 	//lst.push_front(ST1);
 	//lst.push_front(ST3);
 	//lst.push_front(ST2);
+	//Save2Disk(lst);
 	Read4Disk(lst);
 	for (int i = 0; i < lst.GetSize(); i++) {
 		cout << lst[i];

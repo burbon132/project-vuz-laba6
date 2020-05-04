@@ -128,11 +128,15 @@ void Read4Disk(List& lst)
 	int Itemp;
 	while (!fin.eof())
 	{
+		lst.push_front(Student());
 		fin >> Ctemp;
+		if(Ctemp[1] != (char)32)
 		lst[i].SetName(Ctemp);
 		fin >> Ctemp;
+		if (Ctemp[1] != (char)32)
 		lst[i].SetLastName(Ctemp);
 		fin >> Ctemp;
+		if (Ctemp[1] != (char)32)
 		lst[i].SetTrainingDirection(Ctemp);
 		fin >> Itemp;
 		lst[i].SetNumderGroup(Itemp);
