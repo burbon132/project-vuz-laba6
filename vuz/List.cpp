@@ -43,6 +43,12 @@ void List::push_front(Student student)
 	Size++;
 }
 
+void List::push_front_4_Read(Student& student) 
+{
+	head = new Node(student, head);
+	Size++;
+}
+
 void List::clear()
 {
 	while (Size)

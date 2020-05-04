@@ -20,6 +20,23 @@ Student::Student(char* Name, char* LastName, char* TrainingDirection, int Numder
 	BD.SetYear(year);
 }
 
+Student::Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup, int day, int month, int year, int q)
+{
+	char* arrN = new char[strlen(Name) + 1];
+	for (int i = 0; i < strlen(Name) + 1; i++)	{	arrN[i] = Name[i];	}
+	char* arrLN = new char[strlen(LastName) + 1];
+	for (int i = 0; i < strlen(LastName) + 1; i++)	{	arrLN[i] = LastName[i];	}
+	char* arrTD = new char[strlen(TrainingDirection) + 1];
+	for (int i = 0; i < strlen(TrainingDirection) + 1; i++) {	arrTD[i] = TrainingDirection[i];	}
+	this->Name = arrN;
+	this->LastName = arrLN;
+	this->TrainingDirection = arrTD;
+	this->NumberGroup = NumderGroup;
+	BD.SetDay(day);
+	BD.SetMonth(month);
+	BD.SetYear(year);
+}
+
 Student::DataBir::DataBir()
 {
 	this->day = 1;

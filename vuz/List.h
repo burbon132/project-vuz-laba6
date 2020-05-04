@@ -35,6 +35,9 @@ public:
 	//Меняет элементы списка местами
 	void Swap(List& lst, int index1, int index2);
 
+	//добавление элемента в начало списка для чтения с диска
+	void push_front_4_Read(Student& student);
+
 private:
 	class Node
 	{

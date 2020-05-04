@@ -103,7 +103,6 @@ void Save2Disk(List& lst)
 	cin >> path;
 	ofstream fout;
 	fout.open(path);
-	int counter;
 	for (int i = 0; i < lst.GetSize(); i++)
 	{
 		fout.write(lst[i].GetName(), strlen(lst[i].GetName()));
@@ -139,39 +138,20 @@ void Read4Disk(List& lst)
 	ifstream fin;
 	fin.open(path);
 	int i = 0, j = 0;;
-	char* Ctemp = new char;
-	int Itemp;
+	char* Name = new char;
+	char* LastName = new char;
+	char* TrainingDirection = new char;
+	char tresh;
+	int NumberGroup;
+	int day;
+	int month;
+	int year;
 	while (!fin.eof())
 	{
-		lst.push_front(Student());
-		fin >> Ctemp;
-		lst[i].SetName(Ctemp);
-
-		fin >> Ctemp;
-		while (!((Ctemp[j] > (char)62 && Ctemp[j] < (char)91) || (Ctemp[j] > (char)96 && Ctemp[j] < (char)123) || (Ctemp[j] > (char)191 && Ctemp[j] < (char)256)))
-		{
-			fin >> Ctemp;
-			j++;
-		}
-		j = 0;
-		
-		lst[i].SetLastName(Ctemp);
-
-		fin >> Ctemp;
-
-		if (Ctemp == (char*)32)
-			lst[i].SetTrainingDirection(Ctemp);
-
-		fin >> Itemp;
-		lst[i].SetNumderGroup(Itemp);
-		fin >> Itemp;
-		lst[i].SSetDay(Itemp);
-		fin >> Itemp;
-		lst[i].SSetMonth(Itemp);
-		fin >> Itemp;
-		lst[i].SSetYear(Itemp);
-		i++;
+		fin >> Name >> LastName >> TrainingDirection >> NumberGroup >> day >> tresh >> month >> tresh >> year;
+		if (strcmp(Name, "") == 0)
+			break;
+		lst.push_front(Student(Name, LastName, TrainingDirection, NumberGroup, day, month, year, 0));
 	}
-	delete Ctemp;
 	fin.close();
 }
