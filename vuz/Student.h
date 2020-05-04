@@ -29,9 +29,9 @@ public:
 	friend ostream& operator<<(ostream& out, Student& student);
 	
 protected:
-	char* Name = new char[10]; // Имя из 10 символов
+	char* Name = new char[15]; // Имя из 10 символов
 	char* LastName = new char[15]; // Фамилия из 15 символов
-	char* TrainingDirection = new char[4]; // Направление подготовки из 5 символов
+	char* TrainingDirection = new char[5]; // Направление подготовки из 5 символов
 	int   NumberGroup; // номер группы
 
 	class DataBir

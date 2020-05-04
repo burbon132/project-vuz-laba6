@@ -103,11 +103,47 @@ void Save2Disk(List& lst)
 	cin >> path;
 	ofstream fout;
 	fout.open(path);
+	int counter;
 	for (int i = 0; i < lst.GetSize(); i++)
 	{
-		fout.write(lst[i].GetName(), sizeof(lst[i].GetName()));
-		fout.write(lst[i].GetLastName(), sizeof(lst[i].GetLastName()));
-		fout.write(lst[i].GetTrainingDirection(), sizeof(lst[i].GetTrainingDirection()));
+		counter = 0;
+		char* c = lst[i].GetName();
+		for (int j = 0; j < sizeof(lst[i].GetName()); j++) {
+			if ((c[j] > (char)62 && c[j] < (char)91) || (c[j] > (char)96 && c[j] < (char)123) || (c[j] > (char)191 && c[j] < (char)256))
+				counter++;
+	}
+		fout.write(lst[i].GetName(), counter);
+		if (counter < 8) {
+			fout << "\t";
+		}
+		fout << "\t";
+
+		counter = 0;
+		c = lst[i].GetLastName();
+		for (int j = 0; j < sizeof(lst[i].GetLastName()); j++) {
+			if ((c[j] > (char)62 && c[j] < (char)91) || (c[j] > (char)96 && c[j] < (char)123) || (c[j] > (char)191 && c[j] < (char)256))
+				counter++;
+		}
+
+		fout.write(lst[i].GetLastName(), counter);
+		if (counter < 8) {
+			fout << "\t";
+		}
+		fout << "\t";
+
+		counter = 0;
+		c = lst[i].GetTrainingDirection();
+		for (int j = 0; j < sizeof(lst[i].GetTrainingDirection()); j++) {
+			if ((c[j] > (char)62 && c[j] < (char)91) || (c[j] > (char)96 && c[j] < (char)123) || (c[j] > (char)191 && c[j] < (char)256))
+				counter++;
+		}
+
+		fout.write(lst[i].GetTrainingDirection(), counter);
+		if (counter < 8) {
+			fout << "\t";
+		}
+		fout << "\t";
+
 		fout << lst[i].GetNumberGroup() << "\t";
 		fout << lst[i].GGetDay() << ".";
 		fout << lst[i].GGetMonth() << ".";
