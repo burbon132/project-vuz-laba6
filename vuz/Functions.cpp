@@ -154,4 +154,5 @@ void Read4Disk(List& lst)
 		lst.push_front(Student(Name, LastName, TrainingDirection, NumberGroup, day, month, year, 0));
 	}
 	fin.close();
+	cout << endl;
 }
