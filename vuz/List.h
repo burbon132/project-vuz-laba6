@@ -32,6 +32,8 @@ public:
 	//удаление последнего элемента в списке
 	void pop_back();
 
+	void swap(List& lst, int index1, int index2);
+
 private:
 	class Node
 	{

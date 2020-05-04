@@ -76,6 +76,11 @@ void List::pop_back()
 	removeAt(Size - 1);
 }
 
+void List::swap(List& lst, int index1, int index2)
+{
+
+}
+
 Student& List::operator[](const int index)
 {
 	int counter = 0;
