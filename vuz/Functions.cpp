@@ -1,5 +1,5 @@
 #include "Functions.h"
-#include <stdlib.h>
+
 void Compare(List& lst, char* TrainingDirection)
 {
 	for (int i = 0; i < lst.GetSize(); i++) {
@@ -25,14 +25,18 @@ void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber)
 void Eldest(List& lst, List& eldestlst) 
 {
 	Student eldest = lst[0];
+	int index;
 	for (int i = 1; i < lst.GetSize(); i++) 
 	{
 		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() < eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay())
+		{
 			eldest = lst[i];
+			index = i;
+		}
 	}
 	for (int i = 1; i < lst.GetSize(); i++)
 	{
-		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay())
+		if ((lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == eldest.GGetYear() * 10000 + eldest.GGetMonth() * 100 + eldest.GGetDay()) && (index != i))
 			eldestlst.push_back(lst[i]);
 	}
 	eldestlst.push_back(eldest);
@@ -41,14 +45,18 @@ void Eldest(List& lst, List& eldestlst)
 void Junior(List& lst, List& juniorlst)
 {
 	Student junior = lst[0];
+	int index;
 	for (int i = 1; i < lst.GetSize(); i++)
 	{
-		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() < junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
+		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() > junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
+		{
 			junior = lst[i];
+			index = i;
+		}
 	}
 	for (int i = 1; i < lst.GetSize(); i++)
 	{
-		if (lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay())
+		if ((lst[i].GGetYear() * 10000 + lst[i].GGetMonth() * 100 + lst[i].GGetDay() == junior.GGetYear() * 10000 + junior.GGetMonth() * 100 + junior.GGetDay()) && (index != i))
 			juniorlst.push_back(lst[i]);
 	}
 	juniorlst.push_back(junior);
@@ -120,7 +128,7 @@ void Save2Disk(List& lst)
 
 void Read4Disk(List& lst)
 {
-	cout << "Введите путь в конкретную папку и название файла( %Name%.txt ) или только название файла если он лежит в папке с программой)" << endl;
+	cout << "Введите путь в конкретную папку и название файла( %Name%.txt ) или только название файла если он лежит в папке с программой)" << endl << endl;
 	string path;
 	cin >> path;
 	ifstream fin;
@@ -163,8 +171,6 @@ void MainInterface()
 			system("cls");
 			List lst;
 			OptionalInterface(lst);
-			system("pause");
-			system("cls");
 			break;
 		}
 		case(2):
@@ -174,8 +180,6 @@ void MainInterface()
 			Read4Disk(lst);
 			system("cls");
 			OptionalInterface(lst);
-			system("pause");
-			system("cls");
 			break;
 		}
 		case(3):
@@ -208,7 +212,7 @@ void OptionalInterface(List& lst)
 		cout << "7) Сохранить файл на диск" << endl;
 		cout << "8) Просмотр списка" << endl;
 		cout << "9) Очистить список" << endl;
-		cout << "10) Вернуться в главное меню" << endl;
+		cout << "10) Вернуться в главное меню" << endl << endl;
 
 		cin >> MenuBtn;
 		switch (MenuBtn)
@@ -225,14 +229,14 @@ void OptionalInterface(List& lst)
 			int month;
 			int year;
 			cout << "Сколько студентов хотите добавить?" << endl << endl; cin >> counter;
-			cout << "Введите данные о студенте в формате:" << endl;
+			cout << "\nВведите данные о студенте в формате:" << endl;
 			for (int i = 0; i < counter; i++)
 			{
 				cout << "Фамилия: "; cin >> LastName;
-				cout << endl << "Имя: "; cin >> Name;
-				cout << endl << "Направление подготовки: "; cin >> TrainingDirection;
-				cout << endl << "Номер группы: "; cin >> NumberGroup;
-				cout << endl << "День рождения в формате: дд.мм.гггг: "; cin >> day >> trash >> month >> trash >> year;
+				cout << "Имя: "; cin >> Name;
+				cout << "Направление подготовки: "; cin >> TrainingDirection;
+				cout << "Номер группы: "; cin >> NumberGroup;
+				cout << "День рождения в формате: дд.мм.гггг: "; cin >> day >> trash >> month >> trash >> year;
 				lst.push_front(Student(Name, LastName, TrainingDirection, NumberGroup, day, month, year, 0));
 				system("pause");
 				system("cls");
@@ -264,20 +268,22 @@ void OptionalInterface(List& lst)
 			system("cls");
 			int index;
 			bool ex = true;
-			List newlst;
+			List eldlst;
+			List junlst;
 			while (ex)
 			{
 				cout << "1) Найти младшего студента\n2) Найти старшего студента" << endl;
 				cin >> index;
+				system("cls");
 				switch (index)
 				{
 				case(1):
 				{
-					Junior(lst, newlst);
+					Junior(lst, junlst);
 					cout << "Самый(ые) молодой(ые) студент(ы):" << endl << endl;
-					for (int i = 0; i < newlst.GetSize()-1; i++)
+					for (int i = 0; i < junlst.GetSize(); i++)
 					{
-						cout << newlst[i] << endl;
+						cout << junlst[i];
 					}
 					ex = false;
 					system("pause");
@@ -286,11 +292,11 @@ void OptionalInterface(List& lst)
 				}
 				case(2):
 				{
-					Eldest(lst, newlst);
+					Eldest(lst, eldlst);
 					cout << "Самый(ые) старший(ые) студент(ы):" << endl << endl;
-					for (int i = 0; i < newlst.GetSize()-1; i++)
+					for (int i = 0; i < eldlst.GetSize(); i++)
 					{
-						cout << newlst[i] << endl;
+						cout << eldlst[i];
 					}
 					ex = false;
 					system("pause");

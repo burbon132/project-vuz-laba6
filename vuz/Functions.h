@@ -3,6 +3,8 @@
 #define _FUNCTIONS_H_
 #include "List.h"
 #include "Student.h"
+#include <stdlib.h>
+using namespace std;
 void Compare(List& lst, char* TrainingDirection);
 void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber);
 void Eldest(List& lst, List& eldestlst);
