@@ -9,18 +9,18 @@ Student::Student()
 	Student::DataBir::DataBir();
 }
 
-Student::Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup, int day, int month, int year)
+Student::Student(char* Name, char* LastName, char* TrainingDirection, int NumberGroup, int day, int month, int year)
 {
 	this->Name = Name;
 	this->LastName = LastName;
 	this->TrainingDirection = TrainingDirection;
-	this->NumberGroup = NumderGroup;
+	this->NumberGroup = NumberGroup;
 	BD.SetDay(day);
 	BD.SetMonth(month);
 	BD.SetYear(year);
 }
 
-Student::Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup, int day, int month, int year, int q)
+Student::Student(char* Name, char* LastName, char* TrainingDirection, int NumberGroup, int day, int month, int year, int q)
 {
 	char* arrN = new char[strlen(Name) + 1];
 	for (int i = 0; i < strlen(Name) + 1; i++)	{	arrN[i] = Name[i];	}
@@ -31,7 +31,7 @@ Student::Student(char* Name, char* LastName, char* TrainingDirection, int Numder
 	this->Name = arrN;
 	this->LastName = arrLN;
 	this->TrainingDirection = arrTD;
-	this->NumberGroup = NumderGroup;
+	this->NumberGroup = NumberGroup;
 	BD.SetDay(day);
 	BD.SetMonth(month);
 	BD.SetYear(year);

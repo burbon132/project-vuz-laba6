@@ -82,20 +82,6 @@ void SortList(List& lst)
 		k = 0;
 	}
 }
-/*
-void Save2Disk(List& lst)
-{
-	string path;
-	cin >> path;
-	ofstream fout;
-	fout.open(path);
-	for (int i = 0; i < lst.GetSize(); i++)
-	{
-		fout.write((char*)&lst[i], sizeof(Student));
-	}
-	fout.close();
-}
-*/
 
 void Save2Disk(List& lst)
 {
@@ -155,4 +141,157 @@ void Read4Disk(List& lst)
 	}
 	fin.close();
 	cout << endl;
+}
+
+void MainInterface()
+{
+	int MenuBtn;
+	while (true)
+	{	
+		cout << "Введите цифру нужного пункта меню:" << endl << endl;
+		cout << "1) Создать новый список студентов" << endl;
+		cout << "2) Загрузить список с диска" << endl;
+		cout << "3) Выйти из программы" << endl;
+
+		cin >> MenuBtn;
+		switch (MenuBtn)
+		{
+		case(1): 
+		{
+			List lst;
+			OptionalInterface(lst);
+			break;
+		}
+		case(2):
+		{
+			List lst;
+			Read4Disk(lst);
+			OptionalInterface(lst);
+			break;
+		}
+		case(3):
+		{
+			exit(1);
+		}
+		default:
+			cout << "ERROR404: Цифра не найдена xDD" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+	}
+}
+
+void OptionalInterface(List& lst)
+{
+	int MenuBtn;
+	while (true)
+	{
+		cout << "Введите цифру нужного пункта меню:" << endl << endl;
+		cout << "1) Добавить нового студента(В начало списка)" << endl;
+		cout << "2) Удалить выбранного студента" << endl;
+		cout << "3) Отсортировать список по алфавиту(По фамилиям)" << endl;
+		cout << "4) Найти младшего или старшего студента" << endl;
+		cout << "5) Определить всех студентов заданной группы(Направление + Номер группы)" << endl;
+		cout << "6) Определить всех студентов заданного направления" << endl;
+		cout << "7) Сохранить файл на диск" << endl;
+		cout << "8) Просмотр списка" << endl;
+		cout << "9) Очистить список" << endl;
+		cout << "10) Вернуться в главное меню" << endl;
+
+		cin >> MenuBtn;
+		switch (MenuBtn)
+		{
+		case(1):
+		{
+			int counter;
+			char* Name, char* LastName, char* TrainingDirection, char trash, int NumberGroup, int day, int month, int year;
+			cout << "Сколько студентов хотите добавить?" << endl << endl; cin >> counter;
+			cout << "Введите данные о студенте в формате:" << endl;
+			for (int i = 0; i < counter; i++)
+			{
+				cout << "Фамилия: "; cin >> LastName;
+				cout << endl << "Имя: "; cin >> Name;
+				cout << endl << "Направление подготовки: "; cin >> TrainingDirection;
+				cout << endl << "Номер группы: "; cin >> NumberGroup;
+				cout << endl << "День рождения в формате: дд.мм.гггг: "; cin >> day >> trash >> month >> trash >> year;
+				lst.push_front(Student(Name, LastName, TrainingDirection, NumberGroup, day, month, year, 0));
+				system("pause");
+				system("cls");
+			}
+			break;
+		}
+		case(2):
+		{
+			int index;
+			cout << "Введите номер студента, которого хотите удалить: "; cin >> index;
+			lst.removeAt(index);
+			cout << "Выполнено((" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+		case(3):
+		{
+			SortList(lst);
+			break;
+		}
+		case(4):
+		{
+			int index;
+			bool ex = true;
+			List newlst;
+			while (ex)
+			{
+				cout << "1) Найти младшего студента\n2) Найти старшего студента" << endl;
+				cin >> index;
+				switch (index)
+				{
+				case(1):
+				{
+					Junior(lst, newlst);
+					cout << "Самый(ые) молодой(ые) студент(ы):" << endl << endl;
+					for (int i = 0; i < newlst.GetSize(); i++)
+					{
+						cout << newlst[i] << endl;
+					}
+					ex = false;
+					system("pause");
+					system("cls");
+					break;
+				}
+				case(2):
+				{
+					Eldest(lst, newlst);
+					cout << "Самый(ые) старший(ые) студент(ы):" << endl << endl;
+					for (int i = 0; i < newlst.GetSize(); i++)
+					{
+						cout << newlst[i] << endl;
+					}
+					ex = false;
+					system("pause");
+					system("cls");
+					break;
+				}
+				default:
+					cout << "ERROR404: Цифра не найдена xDD" << endl;
+					system("pause");
+					system("cls");
+					break;
+				}
+			}
+			break;
+		}
+		case(5):
+		{
+
+		}
+		default:
+			cout << "ERROR404: Цифра не найдена xDD" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+
+	}
 }

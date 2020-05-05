@@ -8,8 +8,8 @@ struct Student
 {
 public:
 	Student();
-	Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup, int day, int month, int year);
-	Student(char* Name, char* LastName, char* TrainingDirection, int NumderGroup, int day, int month, int year, int q);
+	Student(char* Name, char* LastName, char* TrainingDirection, int NumberGroup, int day, int month, int year);
+	Student(char* Name, char* LastName, char* TrainingDirection, int NumberGroup, int day, int month, int year, int q);
 
 	void SetName(char* Name);
 	void SetLastName(char* LastName);
