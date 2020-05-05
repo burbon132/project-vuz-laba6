@@ -1,5 +1,5 @@
 #include "Functions.h"
-
+#include <stdlib.h>
 void Compare(List& lst, char* TrainingDirection)
 {
 	for (int i = 0; i < lst.GetSize(); i++) {
@@ -86,6 +86,7 @@ void SortList(List& lst)
 void Save2Disk(List& lst)
 {
 	string path;
+	cout << "Введите путь в конкретную папку и название для файла( %Name%.txt ) или только название для файла( %Name%.txt )(Файл будет сохранен в папке с программой)";
 	cin >> path;
 	ofstream fout;
 	fout.open(path);
@@ -183,9 +184,10 @@ void MainInterface()
 }
 
 void OptionalInterface(List& lst)
-{
+{	
+	bool sas = true;
 	int MenuBtn;
-	while (true)
+	while (sas)
 	{
 		cout << "Введите цифру нужного пункта меню:" << endl << endl;
 		cout << "1) Добавить нового студента(В начало списка)" << endl;
@@ -205,7 +207,14 @@ void OptionalInterface(List& lst)
 		case(1):
 		{
 			int counter;
-			char* Name, char* LastName, char* TrainingDirection, char trash, int NumberGroup, int day, int month, int year;
+			char* Name = new char;
+			char* LastName = new char;
+			char* TrainingDirection = new char;
+			char trash;
+			int NumberGroup;
+			int day;
+			int month;
+			int year;
 			cout << "Сколько студентов хотите добавить?" << endl << endl; cin >> counter;
 			cout << "Введите данные о студенте в формате:" << endl;
 			for (int i = 0; i < counter; i++)
@@ -286,10 +295,57 @@ void OptionalInterface(List& lst)
 		{
 			char* TD = new char;
 			int NG;
+			int index;
 			List newlst;
 			cout << "Введите направление и номер группы в формате: 'РТ 12'" << endl; cin >> TD >> NG;
 			Compare(lst, newlst, TD, NG);
-			cout << "Если хотите сохранить список" << endl;
+			cout << "Если хотите сохранить список введите 1, для продолжение без сохранения введите любое другое число" << endl;
+			cin >> index;
+			if (index == 1) {
+				Save2Disk(newlst);
+			}
+			cout << "Файл сохранен";
+			system("pause");
+			system("cls");
+			break;
+		}
+		case(6): 
+		{
+			char* TD = new char;
+			cout << "Введите направление в формате: 'РТ'" << endl; cin >> TD;
+			Compare(lst, TD);
+			system("pause");
+			system("cls");
+			break;
+		}
+		case(7): 
+		{
+			Save2Disk(lst);
+			cout << "Выполнено!" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+		case(8): 
+		{
+			for (int i = 0; i < lst.GetSize(); i++) {		
+				cout << lst[i];
+			}
+			system("pause");
+			system("cls");
+			break;
+		}
+		case(9): 
+		{
+			lst.clear();
+			cout << "Выполнено((" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
+		case(10): 
+		{
+			sas = false;
 			break;
 		}
 		default:
