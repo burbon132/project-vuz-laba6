@@ -218,7 +218,8 @@ void OptionalInterface(List& lst)
 		switch (MenuBtn)
 		{
 		case(1):
-		{	system("cls");
+		{	
+			system("cls");
 			int counter;
 			char* Name = new char;
 			char* LastName = new char;
@@ -229,7 +230,8 @@ void OptionalInterface(List& lst)
 			int month;
 			int year;
 			cout << "Сколько студентов хотите добавить?" << endl << endl; cin >> counter;
-			cout << "\nВведите данные о студенте в формате:" << endl;
+			system("cls");
+			cout << "Введите данные о студенте в формате:" << endl;
 			SetConsoleCP(1251);
 			SetConsoleOutputCP(1251);
 			for (int i = 0; i < counter; i++)
@@ -249,138 +251,231 @@ void OptionalInterface(List& lst)
 			break;
 		}
 		case(2):
-		{	system("cls");
-		for (int i = 0; i < lst.GetSize(); i++) {
-			cout << "Index: " << i << endl << lst[i];
-			
-		}
-			int index;
-			cout << "Введите номер студента, которого хотите удалить: "; cin >> index;
-			lst.removeAt(index);
-			cout << "Выполнено((" << endl;
-			system("pause");
-			system("cls");
-			break;
+		{
+			if (lst.GetSize() != 0) 
+			{
+				system("cls");
+				for (int i = 0; i < lst.GetSize(); i++) {
+					cout << "Index: " << i << endl << lst[i];
+
+				}
+				int index;
+				cout << "Введите номер студента, которого хотите удалить: "; cin >> index;
+				lst.removeAt(index);
+				system("cls");
+				cout << "Выполнено((" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else 
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(3):
 		{
-			system("cls");
-			SortList(lst);
-			break;
+			if (lst.GetSize() != 0)
+			{
+				system("cls");
+				SortList(lst);
+				cout << "Выполнено!" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(4):
 		{
-			system("cls");
-			int index;
-			bool ex = true;
-			List eldlst;
-			List junlst;
-			while (ex)
+			if (lst.GetSize() != 0)
 			{
-				cout << "1) Найти младшего студента\n2) Найти старшего студента" << endl;
-				cin >> index;
 				system("cls");
-				switch (index)
+				int index;
+				bool ex = true;
+				List eldlst;
+				List junlst;
+				while (ex)
 				{
-				case(1):
-				{
-					Junior(lst, junlst);
-					cout << "Самый(ые) молодой(ые) студент(ы):" << endl << endl;
-					for (int i = 0; i < junlst.GetSize(); i++)
+					cout << "1) Найти младшего студента\n2) Найти старшего студента" << endl << endl;
+					cin >> index;
+					system("cls");
+					switch (index)
 					{
-						cout << junlst[i];
-					}
-					ex = false;
-					system("pause");
-					system("cls");
-					break;
-				}
-				case(2):
-				{
-					Eldest(lst, eldlst);
-					cout << "Самый(ые) старший(ые) студент(ы):" << endl << endl;
-					for (int i = 0; i < eldlst.GetSize(); i++)
+					case(1):
 					{
-						cout << eldlst[i];
+						Junior(lst, junlst);
+						cout << "Самый(ые) молодой(ые) студент(ы):" << endl << endl;
+						for (int i = 0; i < junlst.GetSize(); i++)
+						{
+							cout << junlst[i];
+						}
+						ex = false;
+						system("pause");
+						system("cls");
+						break;
 					}
-					ex = false;
-					system("pause");
-					system("cls");
-					break;
+					case(2):
+					{
+						Eldest(lst, eldlst);
+						cout << "Самый(ые) старший(ые) студент(ы)" << endl << endl;
+						for (int i = 0; i < eldlst.GetSize(); i++)
+						{
+							cout << eldlst[i];
+						}
+						ex = false;
+						system("pause");
+						system("cls");
+						break;
+					}
+					default:
+						cout << "ERROR404: Цифра не найдена xDD" << endl;
+						system("pause");
+						system("cls");
+						break;
+					}
 				}
-				default:
-					cout << "ERROR404: Цифра не найдена xDD" << endl;
-					system("pause");
-					system("cls");
-					break;
-				}
+				break;
 			}
-			break;
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(5):
 		{
-			system("cls");
-			char* TD = new char;
-			int NG;
-			int index;
-			List newlst;
-			SetConsoleCP(1251);
-			SetConsoleOutputCP(1251);
-			cout << "Введите направление и номер группы в формате: 'РТ 12'" << endl; cin >> TD >> NG;
-			Compare(lst, newlst, TD, NG);
-			SetConsoleCP(866);
-			SetConsoleOutputCP(866);
-			cout << "Если хотите сохранить список введите 1, для продолжение без сохранения введите любое другое число" << endl;
-			cin >> index;
-			if (index == 1) {
-				Save2Disk(newlst);
+			if (lst.GetSize() != 0)
+			{
+				system("cls");
+				char* TD = new char;
+				int NG;
+				int index;
+				List newlst;
+				SetConsoleCP(1251);
+				SetConsoleOutputCP(1251);
+				cout << "Введите направление и номер группы в формате: РТ 12" << endl; cin >> TD >> NG; cout << endl;
+				Compare(lst, newlst, TD, NG);
+				SetConsoleCP(866);
+				SetConsoleOutputCP(866);
+				cout << "Если хотите сохранить список введите 1, для продолжение без сохранения введите любое другое число" << endl;
+				cin >> index; cout << endl;
+				if (index == 1) {
+					Save2Disk(newlst);
+					cout << "Файл сохранен!" << endl;
+				}
+				system("pause");
+				system("cls");
+				break;
 			}
-			cout << "Файл сохранен";
-			system("pause");
-			system("cls");
-			break;
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(6): 
 		{
-			SetConsoleCP(1251);
-			SetConsoleOutputCP(1251);
-			system("cls");
-			char* TD = new char;
-			cout << "Введите направление в формате: РТ" << endl; cin >> TD;	cout << endl;
-			Compare(lst, TD);
-			SetConsoleCP(866);
-			SetConsoleOutputCP(866);
-			system("pause");
-			system("cls");
-			break;
+			if (lst.GetSize() != 0)
+			{
+				SetConsoleCP(1251);
+				SetConsoleOutputCP(1251);
+				system("cls");
+				char* TD = new char;
+				cout << "Введите направление в формате: РТ" << endl; cin >> TD;	cout << endl;
+				Compare(lst, TD);
+				SetConsoleCP(866);
+				SetConsoleOutputCP(866);
+				system("pause");
+				system("cls");
+				break;
+			}
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(7): 
 		{
-			system("cls");
-			Save2Disk(lst);
-			cout << "Выполнено!" << endl;
-			system("pause");
-			system("cls");
-			break;
+			if (lst.GetSize() != 0)
+			{
+				system("cls");
+				Save2Disk(lst);
+				cout << "Выполнено!" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(8): 
 		{
-			system("cls");
-			for (int i = 0; i < lst.GetSize(); i++) {		
-				cout << lst[i];
+			if (lst.GetSize() != 0)
+			{
+				system("cls");
+				for (int i = 0; i < lst.GetSize(); i++) {
+					cout << lst[i];
+				}
+				system("pause");
+				system("cls");
+				break;
 			}
-			system("pause");
-			system("cls");
-			break;
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(9): 
 		{
-			system("cls");
-			lst.clear();
-			cout << "Выполнено((" << endl;
-			system("pause");
-			system("cls");
-			break;
+			if (lst.GetSize() != 0)
+			{
+				system("cls");
+				lst.clear();
+				cout << "Выполнено((\n" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else
+			{
+				system("cls");
+				cout << "Невозможно совершить данную операцию, так как лист пуст" << endl;
+				system("pause");
+				system("cls");
+				break;
+			}
 		}
 		case(10): 
 		{
