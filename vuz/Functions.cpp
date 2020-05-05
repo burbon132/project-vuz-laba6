@@ -284,7 +284,13 @@ void OptionalInterface(List& lst)
 		}
 		case(5):
 		{
-
+			char* TD = new char;
+			int NG;
+			List newlst;
+			cout << "Введите направление и номер группы в формате: 'РТ 12'" << endl; cin >> TD >> NG;
+			Compare(lst, newlst, TD, NG);
+			cout << "Если хотите сохранить список" << endl;
+			break;
 		}
 		default:
 			cout << "ERROR404: Цифра не найдена xDD" << endl;
