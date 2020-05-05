@@ -3,7 +3,7 @@
 void Compare(List& lst, char* TrainingDirection)
 {
 	for (int i = 0; i < lst.GetSize(); i++) {
-		if (lst[i].GetTrainingDirection() == TrainingDirection) {
+		if (strcmp(lst[i].GetTrainingDirection(), TrainingDirection) == 0) {
 			cout << lst[i];
 		}
 	}
@@ -13,7 +13,7 @@ void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber)
 {
 	for (int i = 0; i < lst.GetSize(); i++) 
 	{
-		if ((lst[i].GetTrainingDirection() == TrainingDirection)&&(lst[i].GetNumberGroup() == GroupNumber)) {
+		if ((strcmp(lst[i].GetTrainingDirection(), TrainingDirection) == 0)&&(lst[i].GetNumberGroup() == GroupNumber)) {
 			newlst.push_front(lst[i]);
 		}
 	}
@@ -230,8 +230,11 @@ void OptionalInterface(List& lst)
 			int year;
 			cout << "Сколько студентов хотите добавить?" << endl << endl; cin >> counter;
 			cout << "\nВведите данные о студенте в формате:" << endl;
+			SetConsoleCP(1251);
+			SetConsoleOutputCP(1251);
 			for (int i = 0; i < counter; i++)
 			{
+
 				cout << "Фамилия: "; cin >> LastName;
 				cout << "Имя: "; cin >> Name;
 				cout << "Направление подготовки: "; cin >> TrainingDirection;
@@ -241,6 +244,8 @@ void OptionalInterface(List& lst)
 				system("pause");
 				system("cls");
 			}
+			SetConsoleCP(866);
+			SetConsoleOutputCP(866);
 			break;
 		}
 		case(2):
@@ -319,8 +324,12 @@ void OptionalInterface(List& lst)
 			int NG;
 			int index;
 			List newlst;
+			SetConsoleCP(1251);
+			SetConsoleOutputCP(1251);
 			cout << "Введите направление и номер группы в формате: 'РТ 12'" << endl; cin >> TD >> NG;
 			Compare(lst, newlst, TD, NG);
+			SetConsoleCP(866);
+			SetConsoleOutputCP(866);
 			cout << "Если хотите сохранить список введите 1, для продолжение без сохранения введите любое другое число" << endl;
 			cin >> index;
 			if (index == 1) {
@@ -333,10 +342,14 @@ void OptionalInterface(List& lst)
 		}
 		case(6): 
 		{
+			SetConsoleCP(1251);
+			SetConsoleOutputCP(1251);
 			system("cls");
 			char* TD = new char;
-			cout << "Введите направление в формате: 'РТ'" << endl; cin >> TD;
+			cout << "Введите направление в формате: РТ" << endl; cin >> TD;	cout << endl;
 			Compare(lst, TD);
+			SetConsoleCP(866);
+			SetConsoleOutputCP(866);
 			system("pause");
 			system("cls");
 			break;

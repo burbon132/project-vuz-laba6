@@ -4,6 +4,7 @@
 #include "List.h"
 #include "Student.h"
 #include <stdlib.h>
+#include <Windows.h>
 using namespace std;
 void Compare(List& lst, char* TrainingDirection);
 void Compare(List& lst, List& newlst, char* TrainingDirection, int GroupNumber);
