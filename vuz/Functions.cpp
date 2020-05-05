@@ -86,7 +86,7 @@ void SortList(List& lst)
 void Save2Disk(List& lst)
 {
 	string path;
-	cout << "Введите путь в конкретную папку и название для файла( %Name%.txt ) или только название для файла( %Name%.txt )(Файл будет сохранен в папке с программой)";
+	cout << "Введите путь в конкретную папку и название для файла( %Name%.txt ) или только название для файла( %Name%.txt )(Файл будет сохранен в папке с программой)" << endl;
 	cin >> path;
 	ofstream fout;
 	fout.open(path);
@@ -120,6 +120,7 @@ void Save2Disk(List& lst)
 
 void Read4Disk(List& lst)
 {
+	cout << "Введите путь в конкретную папку и название файла( %Name%.txt ) или только название файла если он лежит в папке с программой)" << endl;
 	string path;
 	cin >> path;
 	ifstream fin;
@@ -152,22 +153,29 @@ void MainInterface()
 		cout << "Введите цифру нужного пункта меню:" << endl << endl;
 		cout << "1) Создать новый список студентов" << endl;
 		cout << "2) Загрузить список с диска" << endl;
-		cout << "3) Выйти из программы" << endl;
+		cout << "3) Выйти из программы" << endl<< endl;
 
 		cin >> MenuBtn;
 		switch (MenuBtn)
 		{
 		case(1): 
 		{
+			system("cls");
 			List lst;
 			OptionalInterface(lst);
+			system("pause");
+			system("cls");
 			break;
 		}
 		case(2):
 		{
+			system("cls");
 			List lst;
 			Read4Disk(lst);
+			system("cls");
 			OptionalInterface(lst);
+			system("pause");
+			system("cls");
 			break;
 		}
 		case(3):
@@ -184,7 +192,8 @@ void MainInterface()
 }
 
 void OptionalInterface(List& lst)
-{	
+{
+	system("cls");
 	bool sas = true;
 	int MenuBtn;
 	while (sas)
@@ -205,7 +214,7 @@ void OptionalInterface(List& lst)
 		switch (MenuBtn)
 		{
 		case(1):
-		{
+		{	system("cls");
 			int counter;
 			char* Name = new char;
 			char* LastName = new char;
@@ -231,7 +240,11 @@ void OptionalInterface(List& lst)
 			break;
 		}
 		case(2):
-		{
+		{	system("cls");
+		for (int i = 0; i < lst.GetSize(); i++) {
+			cout << "Index: " << i << endl << lst[i];
+			
+		}
 			int index;
 			cout << "Введите номер студента, которого хотите удалить: "; cin >> index;
 			lst.removeAt(index);
@@ -242,11 +255,13 @@ void OptionalInterface(List& lst)
 		}
 		case(3):
 		{
+			system("cls");
 			SortList(lst);
 			break;
 		}
 		case(4):
 		{
+			system("cls");
 			int index;
 			bool ex = true;
 			List newlst;
@@ -260,7 +275,7 @@ void OptionalInterface(List& lst)
 				{
 					Junior(lst, newlst);
 					cout << "Самый(ые) молодой(ые) студент(ы):" << endl << endl;
-					for (int i = 0; i < newlst.GetSize(); i++)
+					for (int i = 0; i < newlst.GetSize()-1; i++)
 					{
 						cout << newlst[i] << endl;
 					}
@@ -273,7 +288,7 @@ void OptionalInterface(List& lst)
 				{
 					Eldest(lst, newlst);
 					cout << "Самый(ые) старший(ые) студент(ы):" << endl << endl;
-					for (int i = 0; i < newlst.GetSize(); i++)
+					for (int i = 0; i < newlst.GetSize()-1; i++)
 					{
 						cout << newlst[i] << endl;
 					}
@@ -293,6 +308,7 @@ void OptionalInterface(List& lst)
 		}
 		case(5):
 		{
+			system("cls");
 			char* TD = new char;
 			int NG;
 			int index;
@@ -311,6 +327,7 @@ void OptionalInterface(List& lst)
 		}
 		case(6): 
 		{
+			system("cls");
 			char* TD = new char;
 			cout << "Введите направление в формате: 'РТ'" << endl; cin >> TD;
 			Compare(lst, TD);
@@ -320,6 +337,7 @@ void OptionalInterface(List& lst)
 		}
 		case(7): 
 		{
+			system("cls");
 			Save2Disk(lst);
 			cout << "Выполнено!" << endl;
 			system("pause");
@@ -328,6 +346,7 @@ void OptionalInterface(List& lst)
 		}
 		case(8): 
 		{
+			system("cls");
 			for (int i = 0; i < lst.GetSize(); i++) {		
 				cout << lst[i];
 			}
@@ -337,6 +356,7 @@ void OptionalInterface(List& lst)
 		}
 		case(9): 
 		{
+			system("cls");
 			lst.clear();
 			cout << "Выполнено((" << endl;
 			system("pause");
@@ -345,10 +365,12 @@ void OptionalInterface(List& lst)
 		}
 		case(10): 
 		{
+			system("cls");
 			sas = false;
 			break;
 		}
 		default:
+			system("cls");
 			cout << "ERROR404: Цифра не найдена xDD" << endl;
 			system("pause");
 			system("cls");
